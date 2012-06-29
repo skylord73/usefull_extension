@@ -18,6 +18,9 @@ Or install it yourself as:
 
   $ gem install usefull_extension
 
+==Usage
+The gem require acts_as_xls (https://github.com/skylord73/acts_as_xls) for xls and xlsx support and add pdf
+
 ===Controler
 in your controller you can write a render like this:
 
@@ -26,8 +29,6 @@ in your controller you can write a render like this:
     @users = User.all
     
     respond_do |format
-      format.xls { render :xls => "index"}
-      format.xlsx { render :xlsx => "index"}
       format.pdf { render :pdf => "index"}
     end
   end
@@ -41,35 +42,17 @@ the renderer will call to_xls method to the @users and return the file
 Note: if you use render :xlsx or :pdf => @users you have to implement your own to_xlsx or to_pdf methods.
 
 ===Views
-you have to create a template in your views folder for xls and xlsx:
+you can use xls or xlsx templates as described in acts_as_xls https://github.com/skylord73/acts_as_xls, or a pdf template
 
-xls template expose the book variable, you can use as explained in Spreadsheet guide (http://spreadsheet.rubyforge.org/GUIDE_txt.html)
-
-  #app/views/users/index.xls.maker
-  sheet1 = book.create_worksheet
-  sheet1.name = 'My First Worksheet'
-  x = 0
-  @user.each {|user| sheet1.row(x + 1).concat [user.name, user.age]}
-  
-and for xlsx the template expose the package variable you can use as described in Axlsx site http://axlsx.blogspot.it/
-
-  #app/views/users/index.xlsx.maker
-  package.workbook do |wb|
-    wb.add_worksheet do |sheet|
-      @users.each { |user| sheet.add_row [user.name, user.age]}
-    end
-  end
-  
-and for pdf the template expose the pdf variable you can use as descibed in Prawn site http://prawn.majesticseacreature.com/
+ the pdf the template expose the pdf variable you can use as descibed in Prawn site http://prawn.majesticseacreature.com/
 
   #app/views/users/index.pdf.maker
-  pdf.text "Hello world
+  pdf.text "Users inspected in pdf..."
+  @users.each { |user| pdf.text user.inspect}
   
 then in your view simply link the page using the right format:
   
   #app/views/users/index.html.erb
-  <%= link_to "xls", users_path(:format => :xls) %>
-  <%= link_to "xlsx", users_path(:format => :xlsx) %>
   <%= link_to "pdf", users_path(:format => :pdf) %>
   
 ===Options

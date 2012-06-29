@@ -23,3 +23,6 @@
 <br />
 
 <%= link_to 'New User', new_user_path %>
+<%= link_to "xls", users_path(:format => :xls) %>
+<%= link_to "xlsx", users_path(:format => :xlsx) %>
+<%= link_to "pdf", users_path(:format => :pdf) %>
