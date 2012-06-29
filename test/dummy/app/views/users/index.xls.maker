@@ -1,0 +1,4 @@
+sheet1 = book.create_worksheet
+sheet1.name = 'My First Worksheet'
+x = 0
+@users.each {|user| sheet1.row(x + 1).concat [user.name, user.age]}

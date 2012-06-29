@@ -1,0 +1,1 @@
+@users.each { |user| pdf.text user.inspect}

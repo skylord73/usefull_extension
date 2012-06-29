@@ -1,0 +1,6 @@
+#app/views/users/index.xlsx.maker
+package.workbook do |wb|
+  wb.add_worksheet do |sheet|
+    @users.each { |user| sheet.add_row [user.name, user.age]}
+  end
+end
