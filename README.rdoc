@@ -4,6 +4,7 @@ Adds usefull extensions to your ruby application:
 - Excel (xls and xlsx)
 - Pdf
 
+you can now create Excel and Pdf using a simple view template
 ==Installation
 
 Add this line to your application's Gemfile:
