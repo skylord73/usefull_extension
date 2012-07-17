@@ -15,7 +15,7 @@ Gem::Specification.new do |s|
   s.require_paths   = ["lib"]
   s.version         = UsefullExtension::VERSION
   
-  s.add_dependency "rails", "3.0.14"
+  s.add_dependency "rails", "~>3.0.14"
   s.add_dependency "paperclip", '2.7.0'
   s.add_dependency "acts_as_xls"
   s.add_dependency "prawn"

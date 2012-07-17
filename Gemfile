@@ -1,6 +1,6 @@
 source "http://rubygems.org"
 
-gem "rails", "3.0.14"
+gem "rails", "~>3.0.14"
 gem "paperclip", '2.7.0'
 gem "acts_as_xls"
 gem "prawn"
