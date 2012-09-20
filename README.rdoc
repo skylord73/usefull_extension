@@ -56,7 +56,15 @@ then in your view simply link the page using the right format:
   
   #app/views/users/index.html.erb
   <%= link_to "pdf", users_path(:format => :pdf) %>
+
+if you need a pdf instance with special options, like templates, you can override the default object :
   
+  #app/views/users/index.pdf.maker
+  @pdf = Prawn::Document.new(:page_size => "A4", :margin => [10.28,10,10,10], :template => 'my_template.pdf')
+  pdf.text "Users inspected in pdf..."
+  @users.each { |user| pdf.text user.inspect}
+
+N.B. You have to redefine @pdf non pdf!!
 ===Options
 You can pass all renderers common options, plus :filename => "my_file_name.xls" | "my_file_name.xlsx" to change the default filename (file.xls or file.xlsx)
 
