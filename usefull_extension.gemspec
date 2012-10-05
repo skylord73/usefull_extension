@@ -18,6 +18,6 @@ Gem::Specification.new do |s|
   s.add_dependency "rails", "~>3.0.14"
   s.add_dependency "paperclip", '2.7.0'
   s.add_dependency "acts_as_xls"
-  s.add_dependency "prawn", ">=1.0"
+  s.add_dependency "prawn", ">=1.0", :git => "git://github.com/prawnpdf/prawn.git"
 end
 
